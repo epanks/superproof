@@ -28,10 +28,10 @@ const Toast = Swal.mixin({
     timer: 3000,
     timerProgressBar: true,
     onOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-  });
+});
 
 window.Toast = Toast;
 
@@ -68,6 +68,10 @@ let routes = [{
     {
         path: '/profile',
         component: (require('./components/Profile.vue').default)
+    },
+    {
+        path: '/paket',
+        component: (require('./components/paket/Paket_data.vue').default)
     },
     {
         path: '*',
@@ -127,7 +131,8 @@ const app = new Vue({
     el: '#app',
     router,
     data: {
-        search: ''
+        search: '',
+        kdoutput: ''
     },
     methods: {
         searchit: _.debounce(() => {
