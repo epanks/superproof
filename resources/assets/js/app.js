@@ -18,17 +18,22 @@ import Gate from "./Gate";
 Vue.prototype.$gate = new Gate(window.user);
 
 
-import swal from 'sweetalert2'
-window.swal = swal;
+import Swal from 'sweetalert2'
+window.Swal = Swal;
 
-const toast = swal.mixin({
+const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3000
-});
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
 
-window.toast = toast;
+window.Toast = Toast;
 
 
 window.Form = Form;

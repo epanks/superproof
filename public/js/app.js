@@ -2387,7 +2387,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.put("api/user/" + this.form.id).then(function () {
         // success
         $("#addNew").modal("hide");
-        swal.fire("Updated!", "Information has been updated.", "success");
+        Swal.fire("Updated!", "Information has been updated.", "success");
 
         _this2.$Progress.finish();
 
@@ -2410,10 +2410,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteUser: function deleteUser(id) {
       var _this3 = this;
 
-      swal.fire({
+      Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
-        type: "warning",
+        icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -2422,10 +2422,10 @@ __webpack_require__.r(__webpack_exports__);
         // Send request to the server
         if (result.value) {
           _this3.form["delete"]("api/user/" + id).then(function () {
-            swal.fire("Deleted!", "Your file has been deleted.", "success");
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
             Fire.$emit("AfterCreate");
           })["catch"](function () {
-            swal.fire("Failed!", "There was something wronge.", "warning");
+            Swal.fire("Failed!", "There was something wronge.", "warning");
           });
         }
       });
@@ -2447,8 +2447,8 @@ __webpack_require__.r(__webpack_exports__);
       this.form.post("api/user").then(function () {
         Fire.$emit("AfterCreate");
         $("#addNew").modal("hide");
-        toast.fire({
-          type: "success",
+        Toast.fire({
+          icon: "success",
           title: "User Created in successfully"
         });
 
@@ -7706,7 +7706,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.widget-user-header{\r\n    background-position: center center;\r\n    background-size: cover;\r\n    height: 250px !important;\n}\n.widget-user .card-footer{\r\n    padding: 0;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.widget-user-header{\n    background-position: center center;\n    background-size: cover;\n    height: 250px !important;\n}\n.widget-user .card-footer{\n    padding: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -80520,14 +80520,19 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_2__["default"](window.user);
 
-window.swal = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a;
-var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a;
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: function onOpen(toast) {
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.resumeTimer);
+  }
 });
-window.toast = toast;
+window.Toast = Toast;
 window.Form = vform__WEBPACK_IMPORTED_MODULE_1__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["AlertError"]);
@@ -81368,8 +81373,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Code\laravelvue\laravStart60\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! D:\Code\laravelvue\laravStart60\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /home/eshan/Dev/laravel/laravstart60/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /home/eshan/Dev/laravel/laravstart60/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })

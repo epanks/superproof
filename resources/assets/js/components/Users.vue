@@ -186,7 +186,7 @@ export default {
         .then(() => {
           // success
           $("#addNew").modal("hide");
-          swal.fire("Updated!", "Information has been updated.", "success");
+          Swal.fire("Updated!", "Information has been updated.", "success");
           this.$Progress.finish();
           Fire.$emit("AfterCreate");
         })
@@ -206,11 +206,11 @@ export default {
       $("#addNew").modal("show");
     },
     deleteUser(id) {
-      swal
+      Swal
         .fire({
           title: "Are you sure?",
           text: "You won't be able to revert this!",
-          type: "warning",
+          icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
@@ -222,11 +222,11 @@ export default {
             this.form
               .delete("api/user/" + id)
               .then(() => {
-                swal.fire("Deleted!", "Your file has been deleted.", "success");
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
                 Fire.$emit("AfterCreate");
               })
               .catch(() => {
-                swal.fire("Failed!", "There was something wronge.", "warning");
+                Swal.fire("Failed!", "There was something wronge.", "warning");
               });
           }
         });
@@ -246,8 +246,8 @@ export default {
           Fire.$emit("AfterCreate");
           $("#addNew").modal("hide");
 
-          toast.fire({
-            type: "success",
+          Toast.fire({
+            icon: "success",
             title: "User Created in successfully"
           });
           this.$Progress.finish();
