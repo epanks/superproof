@@ -192,8 +192,8 @@
 
                 let limit = 1024 * 1024 * 2;
                 if(file['size'] > limit){
-                    swal({
-                        type: 'error',
+                    Swal({
+                        icon: 'error',
                         title: 'Oops...',
                         text: 'You are uploading a large file',
                     })
