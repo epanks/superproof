@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Paket_data;
+use App\Tblkdoutput;
 
 class PaketController extends Controller
 {
@@ -19,6 +20,14 @@ class PaketController extends Controller
             return Paket_data::paginate(10);
         }
     }
+
+    public function getTblkdoutput()
+    {
+        $data = Tblkdoutput::get();
+
+        return response()->json($data);
+    }
+
 
     public function store(Request $request)
     {

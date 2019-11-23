@@ -46,6 +46,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+
+
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',

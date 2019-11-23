@@ -23,5 +23,6 @@ Route::apiResources([
 ]);
 Route::get('profile', 'API\UserController@profile');
 Route::get('findUser', 'API\UserController@search');
+Route::get('getTblkdoutput', 'API\PaketController@getTblkdoutput');
 Route::get('findPaket', 'API\PaketController@search');
 Route::put('profile', 'API\UserController@updateProfile');

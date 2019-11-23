@@ -1,6 +1,15 @@
 <template>
   <div class="content">
     <div class="row mt-5" v-if="$gate.isAdminOrAuthor()">
+      <div>
+        <b-form-select v-model="abat" :options="tblabat"></b-form-select>
+      </div>
+      <!-- <div>
+        <b-form-select v-model="kdoutput" :options="tblkdoutput" multiple :select-size="4"></b-form-select>
+      </div>-->
+      <div>
+        <b-form-select v-model="kdoutput" :options="tblkdoutput"></b-form-select>
+      </div>
       <div class="col-md-12">
         <div class="row mt-3">
           <div class="card">
@@ -167,7 +176,52 @@ export default {
         pagurmp: "",
         keuangan: "",
         progres_fisik: ""
-      })
+      }),
+      abat: null,
+      tblabat: [
+        { value: null, text: "----Please select----" },
+        {
+          value: "1",
+          text: "Perencanaan"
+        },
+        { value: "2", text: "Air Tanah" },
+        {
+          value: "3",
+          text: "Air Baku"
+        },
+        { value: "4", text: "Layanan Internal (Overhead)" },
+        { value: "5", text: "Administrasi" }
+      ],
+      kdoutput: null,
+      tblkdoutput: [
+        { value: null, text: "----Please select----" },
+        {
+          value: "001",
+          text:
+            "Rencana teknis dan dokumen lingkungan hidup untuk konstruksi air tanah dan air baku"
+        },
+        { value: "010", text: "Sumur JIAT yang direhabilitasi" },
+        {
+          value: "011",
+          text: "Jaringan irigasi air tanah (JIAT) yang direhabilitasi"
+        },
+        { value: "002", text: "Sumur air tanah untuk air baku yang dibangun" },
+        { value: "003", text: "Embung air baku yang dibangun" },
+        { value: "004", text: "Unit air baku yang dibangun" },
+        { value: "005", text: "Sumur JIAT yang dibangun/ditingkatkan" },
+        {
+          value: "006",
+          text: "Jaringan irigasi air tanah (JIAT) yang dibangun/ditingkatkan"
+        },
+        {
+          value: "007",
+          text: "Sumur air tanah untuk air baku yang direhabilitasi"
+        },
+        { value: "008", text: "Embung air baku yang direhabilitasi" },
+        { value: "009", text: "Unit air baku yang direhabilitasi" },
+        { value: "951", text: "Layanan Internal (Overhead)" },
+        { value: "970", text: "Layanan Dukungan Manajemen Satker" }
+      ]
     };
   },
   methods: {
