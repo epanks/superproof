@@ -32,7 +32,8 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nmpaket' => 'required|string|max:255'
+            'nmpaket' => 'required|string|max:255',
+            'pagurmp' => 'required|number|max:25'
         ]);
 
         return Paket_data::create([
@@ -60,7 +61,10 @@ class PaketController extends Controller
         $paket = Paket_data::findOrFail($id);
 
         $this->validate($request, [
-            'nmpaket' => 'required|string|max:255'
+            'nmpaket' => 'required|string|max:255',
+            'pagurmp' => 'required|numeric',
+            'keuangan' => 'required_with:pagurmp|numeric|lte:pagurmp',
+            'progres_fisik' => 'nullable|numeric|between:0,100'
         ]);
 
         $paket->update($request->all());

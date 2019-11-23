@@ -1,9 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -13,7 +7,7 @@ import {
     HasError,
     AlertError
 } from 'vform';
-
+import vueNumeralFilterInstaller from 'vue-numeral-filter';
 import Gate from "./Gate";
 Vue.prototype.$gate = new Gate(window.user);
 
@@ -100,7 +94,7 @@ Vue.filter('upText', function (text) {
 Vue.filter('myDate', function (created) {
     return moment(created).format('MMMM Do YYYY');
 });
-
+Vue.use(vueNumeralFilterInstaller);
 
 window.Fire = new Vue();
 
@@ -138,8 +132,8 @@ const app = new Vue({
     el: '#app',
     router,
     data: {
-        search: '',
-        kdoutput: ''
+        search: ''
+        // kdoutput: ''
     },
     methods: {
         searchit: _.debounce(() => {

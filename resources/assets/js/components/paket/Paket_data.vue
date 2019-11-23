@@ -8,7 +8,12 @@
         <b-form-select v-model="kdoutput" :options="tblkdoutput" multiple :select-size="4"></b-form-select>
       </div>-->
       <div>
-        <b-form-select v-model="kdoutput" :options="tblkdoutput"></b-form-select>
+        <b-form-select
+          @onchange="getTblkdoutput()"
+          v-model="kdoutput"
+          :options="tblkdoutput"
+          type="kdoutput"
+        ></b-form-select>
       </div>
       <div class="col-md-12">
         <div class="row mt-3">
@@ -32,6 +37,7 @@
                     <th>Nama Paket</th>
                     <th>Pagu</th>
                     <th>Keuangan</th>
+                    <th>Progres Keuangan</th>
                     <th>Progres Fisik</th>
                     <th>Modify</th>
                   </tr>
@@ -39,9 +45,10 @@
                   <tr v-for="paket in paketdt.data" :key="paket.id">
                     <td>{{paket.id}}</td>
                     <td>{{paket.nmpaket}}</td>
-                    <td>{{paket.pagurmp}}</td>
-                    <td>{{paket.keuangan}}</td>
-                    <td>{{paket.progres_fisik}}</td>
+                    <td class="text-right">{{paket.pagurmp | numeral('0,0')}}</td>
+                    <td class="text-right">{{paket.keuangan | numeral('0,0')}}</td>
+                    <td class="text-right">{{paket.keuangan/paket.pagurmp*100 | numeral('0,0.00')}}</td>
+                    <td class="text-right">{{paket.progres_fisik | numeral('0,0.00')}}</td>
 
                     <td>
                       <a href="#" @click="editModal(paket)">
@@ -142,6 +149,7 @@
                   type="number"
                   name="progres_fisik"
                   placeholder="Pagu"
+                  step="0.01"
                   class="form-control"
                   :class="{ 'is-invalid': form.errors.has('progres_fisik') }"
                 />
