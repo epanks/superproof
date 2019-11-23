@@ -10,4 +10,9 @@ class Paket_data extends Model
     protected $fillable = [
         'kdsatker', 'nmpaket', 'pagurmp', 'trgoutput', 'satoutput', 'trgoutcome', 'satoutcome', 'kdoutput', 'TahunFisik', 'pagurmawal', 'keuangan', 'progres_fisik'
     ];
+
+    public function tblkdoutput()
+    {
+        return $this->belongsTo(Tblkdoutput::class);
+    }
 }
